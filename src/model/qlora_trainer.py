@@ -11,7 +11,7 @@ from transformers import (
 )
 
 from config.qlora_config import QLoRAConfig
-
+from peft import prepare_model_for_kbit_training
 
 class QLoRATrainer:
 
@@ -63,8 +63,7 @@ class QLoRATrainer:
             bnb_4bit_quant_type = self.config._bnb_quant_type,
             llm_int8_enable_fp32_cpu_offload = self.config._cpu_offload, )
 
-        model = AutoModelForCausalLM.from_pretrained(
-            self.config.model_name, quantization_config = bnb_config, device_map = "auto", token = self.config.hf_token, )
+        model = AutoModelForCausalLM.from_pretrained(self.config.model_name, quantization_config = bnb_config, device_map = "auto", token = self.config.hf_token, )
 
         # LoRA config
         lora_config = LoraConfig(
@@ -75,6 +74,7 @@ class QLoRATrainer:
         # Memory optimization
         model.gradient_checkpointing_enable()
         model.config.use_cache = False
+        model = prepare_model_for_kbit_training(model)
         model = get_peft_model(model, lora_config)
         self.model = model
 

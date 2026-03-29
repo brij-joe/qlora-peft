@@ -6,7 +6,7 @@ from config.qlora_config import QLoRAConfig
 from model.qlora_trainer import QLoRATrainer
 
 
-load_dotenv("c:\\temp\\.env")
+load_dotenv()
 
 if __name__ == "__main__":
     # setting a very small training parameter so that it finished quickly

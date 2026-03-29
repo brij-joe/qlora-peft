@@ -5,9 +5,9 @@ description = "Sample project showing how to fine tune your model using QLoRA"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "torch",
-    "torchvision",
-    "torchaudio",
+    "torch==2.1.2",
+    "torchvision==0.16.2",
+    "torchaudio==2.1.2",
     "transformers==4.38.2",
     "peft==0.10.0",
     "bitsandbytes==0.43.1",
@@ -16,17 +16,17 @@ dependencies = [
     "sentencepiece",
     "protobuf",
     "python-dotenv>=1.2.2",
-    "hf-xet>=1.4.2",
+    "triton==2.1.0",
+    "trl",
 ]
 
-# Define the custom PyTorch CUDA index
 [[tool.uv.index]]
-name = "pytorch-cu128"
-url = "https://download.pytorch.org/whl/cu128"
-explicit = true # Ensures this index is only used for packages explicitly listed below
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
 
-# Source torch and torchvision from the custom index
 [tool.uv.sources]
-torch = { index = "pytorch-cu128" }
-torchvision = { index = "pytorch-cu128" }
-torchaudio = { index = "pytorch-cu128" }
+torch = { index = "pytorch-cu121" }
+torchvision = { index = "pytorch-cu121" }
+torchaudio = { index = "pytorch-cu121" }
+
