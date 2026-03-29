@@ -16,10 +16,10 @@ if __name__ == "__main__":
     bnb_config = BitsAndBytesConfig(
         torch_dtype = torch.float16,  # instead of 4bit
         # load_in_4bit = self.config._load_in_4bit,
-        bnb_4bit_compute_dtype = self.config._bnb_compute_dtype,
-        bnb_4bit_use_double_quant = self.config._bnb_use_double_quant,
-        bnb_4bit_quant_type = self.config._bnb_quant_type,
-        llm_int8_enable_fp32_cpu_offload = self.config._cpu_offload, )
+        bnb_4bit_compute_dtype = config._bnb_compute_dtype,
+        bnb_4bit_use_double_quant = config._bnb_use_double_quant,
+        bnb_4bit_quant_type = config._bnb_quant_type,
+        llm_int8_enable_fp32_cpu_offload = config._cpu_offload, )
 
     # First call → initializes model
     inference = QLoRAInference(
@@ -28,8 +28,8 @@ if __name__ == "__main__":
         bnb_config = bnb_config
     )
 
-    response = inference.generate("Explain LoRA in simple terms")
-    print(response)
+    response = inference.generate("Explain LoRA fine-tuning in simple terms")
+    print(f"Here is the response: {response}")
 
     # Second call → reuses same instance (no reload 🚀)
     inference2 = QLoRAInference(
