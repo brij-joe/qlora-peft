@@ -105,6 +105,8 @@ trl
 ```bash
 python src/launch_trainer.py
 ```
+Note: This QLoRA fine tuning program only runs in Linux environment.
+<img width="1916" height="424" alt="image" src="https://github.com/user-attachments/assets/06150926-b5f5-4c89-a954-91fd1f405136" />
 
 ---
 
