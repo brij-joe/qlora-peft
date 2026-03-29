@@ -1,0 +1,32 @@
+[project]
+name = "qlora-peft"
+version = "0.1.0"
+description = "Sample project showing how to fine tune your model using QLoRA"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch",
+    "torchvision",
+    "torchaudio",
+    "transformers==4.38.2",
+    "peft==0.10.0",
+    "bitsandbytes==0.43.1",
+    "accelerate==0.27.2",
+    "datasets",
+    "sentencepiece",
+    "protobuf",
+    "python-dotenv>=1.2.2",
+    "hf-xet>=1.4.2",
+]
+
+# Define the custom PyTorch CUDA index
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true # Ensures this index is only used for packages explicitly listed below
+
+# Source torch and torchvision from the custom index
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }
+torchaudio = { index = "pytorch-cu128" }
