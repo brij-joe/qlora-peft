@@ -79,7 +79,7 @@ cd qlora-peft
 
 ---
 
-### Install Dependencies
+### Install Dependencies (If GPU is available always prefer TORCH with CUDA installation)
 
 ```bash
 uv venv .venv
@@ -87,7 +87,7 @@ uv init .
 uv sync
 ```
 
-Recommended versions:
+Recommended versions(refer pyproject.toml):
 
 ```txt
 transformers==4.38.2
