@@ -29,12 +29,12 @@ if __name__ == "__main__":
     )
 
     response = inference.generate("Explain LoRA fine-tuning in simple terms")
-    print(f"Here is the response: {response}")
+    print(f"Here is the first response: {response}")
 
-    # Second call → reuses same instance (no reload 🚀)
+    # Singleton check, Second call → reuses same instance (no reload)
     inference2 = QLoRAInference(
         model_name = "ignored",
         adapter_path = "ignored"
     )
-
-    print(inference is inference2)  # True
+    response = inference.generate("What is difference between LoRA and QLoRA fine-tuning in simple terms")
+    print(f"Here is the second response: {response}")

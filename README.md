@@ -35,6 +35,7 @@ qlora-peft/
 │   ├── launch_trainer.py        # Entry point
 │   ├── model/
 │   │   └── qlora_trainer.py     # Training pipeline
+│   │   └── qlora_inference.py   # Inference using fine-tune model
 │   ├── config/
 │   │   └── qlora_config.py      # Config class
 │
